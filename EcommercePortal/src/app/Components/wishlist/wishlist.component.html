@@ -1,0 +1,39 @@
+<!--
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Product Id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let Wish of Wishlist">
+      <td scope="col">{{ Wish.id }}</td>
+      <td scope="col">{{ Wish.productId }}</td>
+      <!--  <button
+        (click)="cartservicie.createWishlist(product.id)"
+        class="mr-l btn btn-light btn-outline-primary"
+        type="button"
+      >
+        Add to Wishlist
+      </button>
+    -->
+<!--</tr>
+  </tbody>
+</table>
+-->
+
+<table mat-table [dataSource]="Wishlist" class="mat-elevation-z10 display-flex">
+  &nbsp;
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>Id</th>
+    <td mat-cell *matCellDef="let Wish">{{ Wish.id }}</td>
+  </ng-container>
+  &nbsp;
+  <ng-container matColumnDef="Name">
+    <th mat-header-cell *matHeaderCellDef>ProductId</th>
+    <td mat-cell *matCellDef="let Wish">{{ Wish.productId }}</td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

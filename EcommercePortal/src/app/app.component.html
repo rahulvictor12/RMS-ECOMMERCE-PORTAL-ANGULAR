@@ -1,0 +1,47 @@
+<img src="" />
+
+<div class="container">
+  <h1 class="d-flex justify-content-center">RMS</h1>
+</div>
+<nav class="navbar bg-dark navbar-dark">
+  <a class="navbar-brand text-white">Retail Management Portal</a>
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <button
+        routerLink="Product"
+        class="m-1 btn btn-danger my-2 my-sm-0"
+        Button
+      >
+        Product
+      </button>
+      <button
+        routerLink="Vendor"
+        class="m-1 btn btn-danger my-2 my-sm-0"
+        Button
+      >
+        Vendor
+      </button>
+      <button routerLink="Cart" class="m-1 btn btn-danger my-2 my-sm-0" Button>
+        Cart
+      </button>
+      <button
+        routerLink="Wishlist"
+        class="m-1 btn btn-danger my-2 my-sm-0"
+        Button
+      >
+        Wishlist
+      </button>
+      <button
+        routerLink="login"
+        class="m-1 btn btn-danger my-2 my-sm-0"
+        Button
+        (click)="onLogout()"
+      >
+        Logout
+      </button>
+    </li>
+  </ul>
+</nav>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

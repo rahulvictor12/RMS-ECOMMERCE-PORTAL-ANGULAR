@@ -1,0 +1,51 @@
+<!-- Button trigger modal -->
+
+<p>vendor works!</p>
+
+<button type="button" class="btn btn-primary float-right m-2" data-bs-toggle="modal" data-bs-target="#exampleModal"
+(click)="addClick()" data-backdrop="static" data-keyboard="false">
+   Add Vendors
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+          <button type="button" class="btn-close" 
+          data-bs-dismiss="modal" aria-label="Close" (click)="closeClick()">
+        <span area-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+          <app-addvendor [vendor]="vendor" *ngIf="ActivateaddvendorComp">
+              
+          </app-addvendor>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<table class="table table-striped">
+<thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Delivery Charge</th>
+        <th>Rating</th>
+    </tr>
+</thead>
+<tbody>
+<tr *ngFor="let vendor of VendorList">
+    <td>{{vendor.id}}</td>
+    <td>{{vendor.name}}</td>
+    <td>{{vendor.deliveryCharge}}</td>
+    <td>{{vendor.rating}}</td>
+</tr>
+</tbody>
+</table>

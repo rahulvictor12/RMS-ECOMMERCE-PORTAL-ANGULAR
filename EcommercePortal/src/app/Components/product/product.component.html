@@ -1,0 +1,167 @@
+<br />
+<div class="card m-l" style="width: 50rem">
+  <ul class="list-group">
+    <li class="list-group-item">
+      <strong
+        >Welcome {{ userName }} , Your User Id is {{ userId }} and you are from
+        {{ Address }}</strong
+      >
+    </li>
+  </ul>
+</div>
+
+<button
+  type="button"
+  class="btn btn-danger float-right m-2"
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal"
+  (click)="addClick()"
+  data-backdrop="static"
+  data-keyboard="false"
+>
+  Add to cart
+</button>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ ModalTitle }}</h5>
+      </div>
+      <div class="modal-body">
+        <app-addtocart [cart]="cart" *ngIf="ActivateaddCartComp">
+        </app-addtocart>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex w-50 flex-column justify-content-center">
+  <mat-radio-group [(ngModel)]="searchType">
+    <mat-radio-button color="primary" value="id">Search By Id</mat-radio-button>
+    <mat-radio-button color="primary" value="name"
+      >Search By Name</mat-radio-button
+    >
+  </mat-radio-group>
+  <div class="pt-3">
+    <mat-form-field appearance="fill">
+      <mat-label>Search Product</mat-label>
+      <input matInput [(ngModel)]="searchValue" />
+    </mat-form-field>
+
+    <button
+      style="padding-left: 10px"
+      [disabled]="!searchValue"
+      color="primary"
+      mat-raised-button
+      (click)="SearchProduct()"
+    >
+      Search
+    </button>
+  </div>
+</div>
+<!--
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Product Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Description</th>
+      <th scope="col">Rating</th>
+      <th scope="col">Image</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of ProductList">
+      <td scope="col">{{ product.id }}</td>
+      <td scope="col">{{ product.name }}</td>
+      <td scope="col">{{ product.price }}</td>
+      <!-- <td scope="col"><img [src]={{product.image_Name}}></td>-->
+<!--<td scope="col">{{ product.description }}</td>
+      <td scope="col">{{ product.rating }}</td>
+
+      <button
+        (click)="cartservicie.createWishlist(product.id)"
+        class="mr-l btn btn-light btn-outline-primary"
+        type="button"
+      >
+        Add to Wishlist
+      </button>
+      <button
+        routerLink="Cart"
+        class="mr-l btn btn-light btn-outline-primary"
+        type="button"
+      >
+        Add to Cart
+      </button>
+    </tr>
+  </tbody>
+</table>
+-->
+<table mat-table [dataSource]="ProductList" class="mat-elevation-z8 demo-table">
+  <!-- <ng-container matColumnDef="Id">
+    <th mat-header-cell *matHeaderCellDef>Id</th>
+    <td mat-cell *matCellDef="let product">{{ product.id }}</td>
+  </ng-container>
+  -->
+  &nbsp;
+  <ng-container matColumnDef="Name">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let product">{{ product.name }}</td>
+  </ng-container>
+  <mat-divider [vertical]="true"></mat-divider>
+  &nbsp;
+  <ng-container matColumnDef="Price">
+    <th mat-header-cell *matHeaderCellDef>Price</th>
+    <td mat-cell *matCellDef="let product">{{ product.price }}</td>
+  </ng-container>
+  <mat-divider [vertical]="true"></mat-divider>
+  &nbsp; &nbsp; &nbsp;
+  <ng-container matColumnDef="Description">
+    <th mat-header-cell *matHeaderCellDef>Description</th>
+    <td mat-cell *matCellDef="let product">{{ product.description }}</td>
+  </ng-container>
+  <mat-divider [vertical]="true"></mat-divider>
+  &nbsp;
+  <ng-container matColumnDef="Rating">
+    <th mat-header-cell *matHeaderCellDef>Rating /5</th>
+    <td mat-cell *matCellDef="let product">{{ product.rating }}</td>
+  </ng-container>
+  <mat-divider [vertical]="true"></mat-divider>
+
+  <ng-container matColumnDef="Action">
+    <th mat-header-cell *matHeaderCellDef>Action</th>
+    <td mat-cell *matCellDef="let product">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="cartservicie.createWishlist(product.id)"
+      >
+        Add to Wishlist
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+        data-backdrop="static"
+        data-keyboard="false"
+        (click)="addtoCart(product.id)"
+      >
+        Add to Cart
+      </button>
+    </td>
+  </ng-container>
+
+  &nbsp;
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
